@@ -1,0 +1,23 @@
+create table WORK (work_id int,user_id int, work_type char);
+insert into WORK values(1,11 , "complex" );
+insert into WORK values(2,12 , "simple" );
+insert into WORK values(3,13 , "medium" );
+create table USERS (user_id int, team char);
+insert into USERS values(11 , "A" );
+insert into USERS values(12 , "B" );
+insert into USERS values(13 , "B" );
+
+create table MANAGERS (manager_id int, team char);
+insert into MANAGERS values(21 , "A" );
+insert into MANAGERS values(22 , "B" );
+--insert into MANAGERS values(22 , "C" );
+
+select * from USERS;
+
+select * from WORK;
+select * from MANAGERS;
+--select team from MANAGERS where manager_id = 22;
+select user_id from USERS where team = (select team from MANAGERS where manager_id = 22);
+
+select work_type from WORK where 
+user_id IN ( select user_id from USERS where team = (select team from MANAGERS where manager_id = 22)) ;
