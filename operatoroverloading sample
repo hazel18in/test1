@@ -1,0 +1,48 @@
+/******************************************************************************
+
+                              Online C++ Compiler.
+               Code, Compile, Run and Debug C++ program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
+#include<iostream>
+
+using namespace std;
+
+class sample{
+
+int x,y;
+
+public:
+sample(){}
+sample(int s,int t){ x=s;y=t;}
+void display()
+{
+    cout<<"the values are " << x <<"and" <<y;
+}
+    
+sample operator * (sample obj);
+
+};
+
+sample sample::operator * (sample obj)
+{
+    
+sample z;
+z.x= x * obj.x;
+z.y= y * obj.y;
+
+return z;
+}
+
+
+int main ()
+{
+     sample obj1(3,4),obj2(7,8),obj3;
+     //obj2.getData(3,4);
+     //obj1.getData(7,8);
+     obj3=obj1*obj2;
+     obj3.display();
+     return 0;
+}
